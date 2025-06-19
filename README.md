@@ -10,7 +10,7 @@ API RESTful para la gestión de tareas desarrollada con **Node.js**, **Express**
 
 ```bash
 git clone https://github.com/tu-usuario/task-manager-api.git
-cd task-manager-api/server
+cd server
 npm install
 ## En la raiz de la carpeta server crea una archivo .env basado en el .env.example y editá el .env con tus propias configuraciones:
 cp .env.example .env
