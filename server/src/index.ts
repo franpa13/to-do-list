@@ -1,4 +1,6 @@
 import dotenv from 'dotenv';
+import cors from "cors";
+
 dotenv.config();
 import { DB } from "./db/db";
 DB
@@ -11,9 +13,14 @@ import { errorHandler } from "./middlewares/errorHandler";
 
 const app = express();
 
+
+app.use(cors({
+    origin: process.env.CLIENT_ORIGIN || "*",
+}));
+
 app.use(bodyParser.json());
 app.use(responseFormatter);
-app.use('/api', router); 
+app.use('/api', router);
 app.use(errorHandler);
 
 app.get("/", (_req, res: Response) => {
