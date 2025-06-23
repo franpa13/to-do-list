@@ -1,14 +1,36 @@
-import { useState } from 'react'
+
+import { Outlet } from 'react-router';
 import './App.css'
-import { Button } from "@/components/ui/button"
+import { ThemeProvider } from './components/theme-provider'
+import { Navbar } from './components/navbar';
+import { useGetTasks } from './hooks/useGetTasks';
+import { useTaskStore } from './store/task-store';
+import { ProgressBar } from './components/progress-bar';
+import { ErrorComponent } from './components/error-component';
+import { Toaster } from 'sonner';
 
 function App() {
-  const [count, setCount] = useState(0)
+  useGetTasks()
+
+  const { loading, error } = useTaskStore();
+  console.log(error, "error");
 
   return (
-    <>
-     <Button variant="destructive" >awdawd</Button>
-    </>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+
+      <Navbar />
+      {error ? (
+        <ErrorComponent error={error} />
+      ) : loading ? (
+        <ProgressBar />)
+        : (
+          <Outlet />
+        )}
+      {/* notificaciones Toast*/}
+      <Toaster />
+
+    </ThemeProvider>
+
   )
 }
 
