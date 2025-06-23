@@ -14,8 +14,13 @@ import { errorHandler } from "./middlewares/errorHandler";
 const app = express();
 
 
+const allowedOrigins = [
+  process.env.DEVELOPMENT_ORIGIN, 
+  process.env.BUILD_ORIGIN
+].filter((origin): origin is string => !!origin); 
+
 app.use(cors({
-    origin: process.env.CLIENT_ORIGIN || "*",
+    origin: allowedOrigins,
 }));
 
 app.use(bodyParser.json());
