@@ -61,7 +61,14 @@ export const TaskForm = () => {
             }
 
         } catch (error) {
-            toast
+            toast("Ha ocurrido un error, intentalo nuevamente !", {
+                    closeButton: true,
+                    richColors: true,
+                    position: "bottom-right",
+                    style: { backgroundColor: "red", border: "none", color: "white" },
+                    actionButtonStyle : {backgroundColor:"black" , color:"wheat"}
+                    
+                })
             console.error("Error al crear tarea:", error)
         } finally {
             setLoading(false)
@@ -70,9 +77,12 @@ export const TaskForm = () => {
 
 
     return (
-        <form onSubmit={handleSubmit} className="mx-auto max-w-md mt-0 space-y-6">
+        <form onSubmit={handleSubmit} className="md:mx-auto mx-4 max-w-md mt-0 space-y-6">
             <div className="space-y-2 text-center">
+                <div className="flex justify-center gap-2 items-center">
                 <h1 className="text-3xl font-bold">Empieza ahora</h1>
+                <img src="./logo.png" className="w-[50px]" alt="" />
+                </div>
                 <p className="text-gray-500 dark:text-gray-400">
                     Por favor, rellene el formulario para añadir una nueva tarea.
                 </p>
@@ -115,7 +125,7 @@ export const TaskForm = () => {
 
 
                 {/* BOTÓN */}
-                <Button type="submit" disabled={loading} variant="outline" className="w-full cursor-pointer">
+                <Button type="submit" disabled={loading} variant="default" className="w-full cursor-pointer">
                     {loading ? (
                         <Loader />
                     ) : (

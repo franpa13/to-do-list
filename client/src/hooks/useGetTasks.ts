@@ -25,10 +25,10 @@ export const useGetTasks = () => {
           // Accede con seguridad al mensaje de error del backend
           setError(axiosError.response.data?.message || 'Error al obtener las tareas');
         } else if (axiosError.request) {
-          // Sin respuesta del servidor
+          // server out
           setError('No se pudo conectar con el servidor.');
         } else {
-          // Otro tipo de error
+          // Otherr error
           setError(axiosError.message || 'Error inesperado');
         }
 

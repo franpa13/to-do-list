@@ -1,11 +1,11 @@
+import api from "@/lib/axios"
 import type {  ApiResponseUniqueTask } from "@/types/task-types"
-import axios from "axios"
+
 
 
 export const getTask = async (idTask: string) => {
     try {
-        const response = await axios.get<ApiResponseUniqueTask>(`http://localhost:3000/api/tasks/${idTask}`)
-        console.log(response , "repsonse tashhhh");
+        const response = await api.get<ApiResponseUniqueTask>(`/tasks/${idTask}`)
         
         return response.data.data
     } catch (error) {

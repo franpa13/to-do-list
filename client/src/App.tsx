@@ -11,10 +11,7 @@ import { Toaster } from 'sonner';
 
 function App() {
   useGetTasks()
-
   const { loading, error } = useTaskStore();
-  console.log(error, "error");
-
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
 

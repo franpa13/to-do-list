@@ -42,7 +42,7 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
       id: taskId
     };
 
-    // Actualización optimista
+   
     set({
       tasks: originalTasks.map(task =>
         task.id === taskId ? updatedTask : task
@@ -66,16 +66,16 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
       throw new Error(`Task with id ${taskId} not found`);
     }
 
-    // 1. Eliminación optimista inmediata
+
     set({
       tasks: originalTasks.filter(task => task.id !== taskId)
     });
 
     try {
-      // 2. Eliminación real en el backend
+   
       await deleteTask(taskId);
     } catch (error) {
-      // 3. Reversión en caso de error
+
       set({ tasks: originalTasks });
       set({ error: 'Failed to delete task' });
       throw error;

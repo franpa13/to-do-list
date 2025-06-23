@@ -20,7 +20,7 @@ type MenuTableProps = {
 
 export const MenuTable = ({ table }: MenuTableProps) => {
     return (
-        <div className="flex items-center py-4">
+        <div className="flex gap-3 items-center py-4">
             <Input
                 placeholder="Filtrar por título..."
                 value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
@@ -41,8 +41,6 @@ export const MenuTable = ({ table }: MenuTableProps) => {
                         .getAllColumns()
                         .filter((column) => column.getCanHide())
                         .map((column) => {
-
-
                             return (
                                 (
                                     <DropdownMenuCheckboxItem

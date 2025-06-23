@@ -1,10 +1,9 @@
 import { type ColumnDef } from "@tanstack/react-table";
 import { type Priority, type Task } from "@/types/task-types";
 import { Ban, Calendar, Flag, SquareCheckBig } from "lucide-react";
-
-
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 import { useTaskStore } from "@/store/task-store";
+import { toast } from "sonner";
 
 export const taskColumns: ColumnDef<Task>[] = [
   {
@@ -31,9 +30,9 @@ export const taskColumns: ColumnDef<Task>[] = [
       const value: Priority = row.getValue("priority");
 
       const colorMap = {
-        HIGH: "text-red-500 border-red-700 bg-red-900/10",
-        MEDIUM: "text-yellow-500 border-yellow-500 bg-yellow-900/10",
-        LOW: "text-green-500 border-green-500 bg-green-900/10",
+        HIGH: "text-red-500 border-red-700 dark:bg-red-900/10",
+        MEDIUM: "text-yellow-500 border-yellow-500 darK:bg-yellow-900/10",
+        LOW: "text-green-500 border-green-500 darK:bg-green-900/10",
       };
 
       const labelMap = {
@@ -46,6 +45,7 @@ export const taskColumns: ColumnDef<Task>[] = [
         try {
           await optimisticUpdatePriority(taskId, newPriority);
         } catch (e) {
+          toast("Ha ocurrido un error, intentelo nuevamente!")
           console.error("Error actualizando prioridad:", e);
         }
       };
@@ -95,14 +95,14 @@ export const taskColumns: ColumnDef<Task>[] = [
 
       if (completed) {
         return (
-          <div className={`${baseClasses} border-green-500 bg-green-900/10 text-green-400`}>
+          <div className={`${baseClasses} border-green-500 dark:bg-green-900/10 text-green-400`}>
             <SquareCheckBig size={15} strokeWidth={2} />
             <span>COMPLETADO</span>
           </div>
         );
       } else {
         return (
-          <div className={`${baseClasses} border-red-500 bg-red-900/10 text-red-500`}>
+          <div className={`${baseClasses} border-red-500 dark:bg-red-900/10 text-red-500`}>
             <Ban size={15} strokeWidth={2} />
             <span>PENDIENTE</span>
           </div>
@@ -118,7 +118,7 @@ export const taskColumns: ColumnDef<Task>[] = [
         "flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold w-fit";
       const date = formatDate(row.getValue("dueDate"))
       return (
-        <div className={`${baseClasses} border-gray-700 bg-gray-900/10 text-gray-500`}>
+        <div className={`${baseClasses} border-gray-700 dark:bg-gray-900/10 text-gray-500`}>
           <Calendar size={16} strokeWidth={1.25} />
           <span>{date}</span>
         </div>
@@ -135,7 +135,7 @@ export const taskColumns: ColumnDef<Task>[] = [
       const date = formatDate(row.getValue("createdAt"))
       return (
         <section className="flex justify-end ">
-          <div className={`${baseClasses} border-gray-700 bg-gray-900/10 text-gray-500 `}>
+          <div className={`${baseClasses} border-gray-700 dark:bg-gray-900/10 text-gray-500 `}>
             <span>{date}</span>
           </div>
         </section>

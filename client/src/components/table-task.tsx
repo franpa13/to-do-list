@@ -66,8 +66,7 @@ export const TableTask = () => {
         autoResetPageIndex: false,
     })
     const redirecting = (type: string, id: string, task: Task) => {
-        console.log(task, "taske");
-
+       
         if (type == "navigate") {
             navigate(`/task/${id}`)
         } else {
@@ -82,13 +81,11 @@ export const TableTask = () => {
             await useTaskStore.getState().optimisticDelete(taskId);
 
             toast("Tarea eliminada correctamente", {
-                style: { backgroundColor: "red", color: "white", border: "none" },
+                style: { backgroundColor: "#2b7fff" , color: "white", border: "none" },
                 closeButton: true,
-
-
+                
             })
         } catch (error) {
-
             console.error("Error al eliminar tarea:", error);
         }
     };

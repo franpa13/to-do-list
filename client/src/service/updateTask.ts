@@ -1,5 +1,6 @@
+import api from "@/lib/axios"
 import type { Task } from "@/types/task-types"
-import axios from "axios"
+
 
 export const updateTask = async (id: string, newTask: Task) => {
     const taskUpdated = {
@@ -10,7 +11,7 @@ export const updateTask = async (id: string, newTask: Task) => {
     }
 
     try {
-        const response = await axios.put(`http://localhost:3000/api/tasks/${id}`, taskUpdated)
+        const response = await api.put(`/tasks/${id}`, taskUpdated)
         return response
     } catch (error) {
         console.error("Error al actualizar la tarea:", error)

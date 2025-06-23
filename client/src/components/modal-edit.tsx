@@ -17,7 +17,6 @@ type ModalEditProps = {
     open: boolean
     onOpenChange: (open: boolean) => void
     task: Task
-
 }
 
 export const ModalEdit = ({ open, onOpenChange, task }: ModalEditProps) => {
@@ -59,7 +58,11 @@ export const ModalEdit = ({ open, onOpenChange, task }: ModalEditProps) => {
             });
 
             onOpenChange(false);
-            toast("Tarea editada correctamente!")
+            toast("Tarea editada correctamente!", {
+                style: { backgroundColor: "blue", color: "white", border: "none" },
+                closeButton: true,
+                
+            })
         } catch (error) {
             console.error("Error al actualizar tarea:", error);
 

@@ -1,4 +1,5 @@
-import axios from "axios"
+import api from "@/lib/axios"
+
 
 interface PropsCreate {
     title: string
@@ -7,7 +8,7 @@ interface PropsCreate {
 
 export const createTask = async ({ title, dueDate }: PropsCreate) => {
     try {
-        const response = await axios.post("http://localhost:3000/api/task", {
+        const response = await api.post("/task", {
             title,
             dueDate,
         })
