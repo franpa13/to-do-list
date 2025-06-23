@@ -11,7 +11,7 @@ App para la gestión de tareas desarrollada con **React.js** y **TypeScript**..
 
 
 ```bash
-git clone https://github.com/tu-usuario/task-manager-api.git
+git clone https://github.com/franpa13/to-do-list.git
 cd server
 npm install
 ## En la raiz de la carpeta server crea una archivo .env basado en el .env.example y editá el .env con tus propias configuraciones:
