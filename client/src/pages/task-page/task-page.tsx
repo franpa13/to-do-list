@@ -34,7 +34,7 @@ export const TaskPage = () => {
       }
     }
     fetchTask()
-  }, [tasks])
+  }, [tasks , id])
 
 
   return (

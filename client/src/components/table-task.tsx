@@ -81,7 +81,7 @@ export const TableTask = () => {
             await useTaskStore.getState().optimisticDelete(taskId);
 
             toast("Tarea eliminada correctamente", {
-                style: { backgroundColor: "#2b7fff" , color: "white", border: "none" },
+                style: { backgroundColor: "red" , color: "white", border: "none" },
                 closeButton: true,
                 
             })

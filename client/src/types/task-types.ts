@@ -28,4 +28,4 @@ export type Task = {
   priority: Priority;
 };
 
-
+export type FilterOption = "all" | "completed" | "pending";

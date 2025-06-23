@@ -39,5 +39,5 @@ export const useGetTasks = () => {
     };
 
     fetchTasks();
-  }, []);
+  }, [setError,setLoading, setTasks]);
 };
