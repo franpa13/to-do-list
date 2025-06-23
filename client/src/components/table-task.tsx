@@ -66,7 +66,7 @@ export const TableTask = () => {
         autoResetPageIndex: false,
     })
     const redirecting = (type: string, id: string, task: Task) => {
-       
+
         if (type == "navigate") {
             navigate(`/task/${id}`)
         } else {
@@ -81,9 +81,9 @@ export const TableTask = () => {
             await useTaskStore.getState().optimisticDelete(taskId);
 
             toast("Tarea eliminada correctamente", {
-                style: { backgroundColor: "red" , color: "white", border: "none" },
+                style: { backgroundColor: "red", color: "white", border: "none" },
                 closeButton: true,
-                
+
             })
         } catch (error) {
             console.error("Error al eliminar tarea:", error);
@@ -194,7 +194,9 @@ export const TableTask = () => {
                     </Button>
                 </div>
             </div>
-            <ModalEdit onOpenChange={setOpenModal} open={openModal} task={taskEdit} />
+      
+                <ModalEdit onOpenChange={setOpenModal} open={openModal} task={taskEdit} />
+         
         </div>
     )
 }

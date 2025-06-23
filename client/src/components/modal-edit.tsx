@@ -20,7 +20,9 @@ type ModalEditProps = {
 }
 
 export const ModalEdit = ({ open, onOpenChange, task }: ModalEditProps) => {
-  
+    if (!task) {
+        return null
+    }
     const [form, setForm] = useState({
         title: task.title ?? "",
         description: task.description ?? "",
@@ -37,9 +39,7 @@ export const ModalEdit = ({ open, onOpenChange, task }: ModalEditProps) => {
         })
     }, [task])
 
-  if (!task) {
-        return null
-    }
+
     const handleChange = <K extends keyof typeof form>(key: K, value: (typeof form)[K]) => {
         setForm(prev => ({ ...prev, [key]: value }))
     }
@@ -61,7 +61,7 @@ export const ModalEdit = ({ open, onOpenChange, task }: ModalEditProps) => {
             toast("Tarea editada correctamente!", {
                 style: { backgroundColor: "blue", color: "white", border: "none" },
                 closeButton: true,
-                
+
             })
         } catch (error) {
             console.error("Error al actualizar tarea:", error);
