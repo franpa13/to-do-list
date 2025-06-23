@@ -21,7 +21,7 @@ npm run dev
 
 
 # En otra terminal (frontend)
-cd ../client
+cd client
 npm install
 ## En la raiz de la carpeta server crea una archivo .env basado en el .env.example y editá el .env con tus propias configuraciones:
 cp .env.example .env
